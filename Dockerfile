@@ -12,14 +12,10 @@ RUN apt-get update && apt-get install -y maven && rm -rf /var/lib/apt/lists/*
 COPY pom.xml /app
 RUN mvn dependency:go-offline
 
-# プロジェクトのソースコードをコピー
-COPY src /app/src
-
-# Maven のビルド（キャッシュを活用）
-RUN mvn clean install
+# ソースコードはボリュームマウントでマウントされるため、ここではコピーしない
 
 # ホットリロードを有効にする環境変数を設定
-ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true"
+ENV JAVA_OPTS="-Dspring.devtools.restart.enabled=true -Dspring.devtools.livereload.enabled=true -Dspring.devtools.restart.poll-interval=2s -Dspring.devtools.restart.quiet-period=1s"
 
-# アプリケーションを実行
-CMD ["sh", "-c", "mvn spring-boot:run -Dspring-boot.run.profiles=dev $JAVA_OPTS"]
+# アプリケーションを実行（ボリュームマウントされたソースコードを使用）
+CMD ["sh", "-c", "mvn spring-boot:run $JAVA_OPTS"]

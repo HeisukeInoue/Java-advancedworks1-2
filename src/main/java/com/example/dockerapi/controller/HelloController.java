@@ -1,5 +1,6 @@
 package com.example.dockerapi.controller;
 
+import com.example.dockerapi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,4 +33,29 @@ public class HelloController {
             return "Database connection failed!";
         }
     }
+
+    @GetMapping("/users")
+    public User getUsers() {
+        return new User(1, "John Doe", "john.doe@example.com");
+    }
+
+    @GetMapping("/presents")
+    public int howBigYourLove() {
+        return 50000000 + 30000;
+    }
+
+    /*@GetMapping("/")
+    public hoge() {
+        
+    }
+
+    @GetMapping("/")
+    public hoge() {
+        
+    }
+
+    @GetMapping("/")
+    public hoge() {
+        
+    }*/
 }
