@@ -1,0 +1,16 @@
+{
+	"java.configuration.updateBuildConfiguration": "automatic",
+	"java.compile.nullAnalysis.mode": "automatic",
+	"java.errors.incompleteClasspath.severity": "warning",
+	"java.configuration.runtimes": [],
+	"java.jdt.ls.java.home": null,
+	"files.exclude": {
+		"**/.classpath": true,
+		"**/.project": true,
+		"**/.settings": true,
+		"**/.factorypath": true
+	},
+	"java.import.maven.enabled": true,
+	"java.maven.downloadSources": true,
+	"java.maven.downloadJavadoc": true
+}
